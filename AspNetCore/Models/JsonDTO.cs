@@ -12,5 +12,6 @@ namespace AspNetCore.Models
         public Asignatura Asignatura { get; set; }
         public List<Asignatura> Asignaturas { get; set; }
         public List<Escuela> Escuelas { get; set; }
+        public List<Alumno> Alumnos { get; set; }
     }
 }

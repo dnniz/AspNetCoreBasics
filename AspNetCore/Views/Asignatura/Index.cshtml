@@ -6,5 +6,20 @@
 
 <h2>Asignaturas</h2>
 
-<partial name="_AsignaturaSimple" />
+
+<table class="table table-responsive table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var alumno in Model.Alumnos)
+        {
+            <partial name="_AsignaturaSimple" model="alumno" />
+        }
+    </tbody>
+</table>
+
 
