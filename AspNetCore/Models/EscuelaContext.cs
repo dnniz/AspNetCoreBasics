@@ -28,11 +28,13 @@ namespace AspNetCore.Models
             dicc.TryGetValue(LlaveDiccionario.Curso, out var lstCursos);
             dicc.TryGetValue(LlaveDiccionario.Asignatura, out var lstAsignaturas);
 
+            //Adaptando Contenido del diccionario
+            //Resulta que no se debe enviar ninguna propiedad de los listados llena, cuando se quiere insertar en las tablas. Se puede pero aún no sé cómo.
             var alumnos = lstAlumnos.Cast<Alumno>().Select(x => new Alumno { AlumnoId = x.AlumnoId, CursoId = x.CursoId, Nombre = x.Nombre }).ToList();
             var evaluaciones = lstEvaluaciones.Cast<Evaluacion>().Select(x => new Evaluacion { EvaluacionId = x.EvaluacionId, AlumnoId = x.AlumnoId, Nombre = x.Nombre, AsignaturaId = x.AsignaturaId, Nota = x.Nota}).ToList();
             var escuelas = lstEscuela.Cast<Escuela>().Select(x => new Escuela { EscuelaId = x.EscuelaId, Nombre = x.Nombre, CantAlumnos = x.CantAlumnos, TipoEscuela = x.TipoEscuela, AñoCreación = x.AñoCreación, Direccion = x.Direccion }).ToList();
-            var cursos = lstCursos.Cast<Curso>().Select(x => new Curso { CursoId = x.CursoId, EscuelaId = x.EscuelaId, Direccion = x.Direccion, Nombre = x.Nombre, Jornada = x.Jornada} ) .ToList();
-            var asignaturas = lstAsignaturas.Cast<Asignatura>().Select(x => new Asignatura { AsignaturaId = x.AsignaturaId, Nombre = x.Nombre, CursoId = x.CursoId} ) .ToList();
+            var cursos = lstCursos.Cast<Curso>().Select(x => new Curso { CursoId = x.CursoId, EscuelaId = x.EscuelaId, Direccion = x.Direccion, Nombre = x.Nombre, Jornada = x.Jornada} ).ToList();
+            var asignaturas = lstAsignaturas.Cast<Asignatura>().Select(x => new Asignatura { AsignaturaId = x.AsignaturaId, Nombre = x.Nombre, CursoId = x.CursoId} ).ToList();
 
 
             modelBuilder.Entity<Escuela>().HasData(escuelas.ToArray());
@@ -40,24 +42,6 @@ namespace AspNetCore.Models
             modelBuilder.Entity<Asignatura>().HasData(asignaturas.ToArray());
             modelBuilder.Entity<Alumno>().HasData(alumnos.ToArray());
             modelBuilder.Entity<Evaluacion>().HasData(evaluaciones.ToArray());
-
-            //modelBuilder.Entity<Evaluacion>().HasData(evaluaciones.ToArray());
-
-            
-
-            //modelBuilder.Entity<Evaluacion>().HasKey(x => x.EvaluacionId);
-
-
-            //modelBuilder.Entity<Evaluacion>().HasOne(x => x.Alumno).WithOne().HasForeignKey<Alumno>(x => x.AlumnoId);
-            //modelBuilder.Entity<Evaluacion>().HasData(evaluaciones.ToArray());
-
-
-
-            //modelBuilder.Entity<Alumno>()//   .WithOne().HasForeignKey<Evaluacion>(x => x.AlumnoId);
-            //modelBuilder.Entity<Alumno>().HasData(alumnos.ToArray());
-            
-
-
 
             base.OnModelCreating(modelBuilder);
         }

@@ -15,9 +15,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var alumno in Model.Alumnos)
+        @foreach (var asignatura in Model.Asignaturas)
         {
-            <partial name="_AsignaturaSimple" model="alumno" />
+            <partial name="_AsignaturaSimple" model="asignatura" />
         }
     </tbody>
 </table>

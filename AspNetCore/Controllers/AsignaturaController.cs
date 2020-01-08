@@ -16,14 +16,16 @@ namespace AspNetCore.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        [Route("Asignatura/Index/{asignaturaId}")]
+        [Route("Asignatura/Index")]
+        public IActionResult Index(string asignaturaId)
         {
-            //var rep = new Reporte(_context.ObtenerDiccionarioEscuela());
             var model = new JsonDTO();
-            //model.Asignaturas = new List<Asignatura>();
-            //model.Asignaturas = rep.ListaAsignaturas();
 
-            model.Alumnos = _context.Alumnos.ToList();
+            //model.Alumnos = _context.Alumnos.ToList();
+            model.Asignaturas = _context.Asignaturas
+                                .Where(x => string.IsNullOrEmpty(asignaturaId) || x.AsignaturaId == asignaturaId )
+                                .ToList();
 
             return View(model);
         }
