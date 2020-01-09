@@ -22,7 +22,6 @@ namespace AspNetCore.Controllers
         {
             var model = new JsonDTO();
 
-            //model.Alumnos = _context.Alumnos.ToList();
             model.Asignaturas = _context.Asignaturas
                                 .Where(x => string.IsNullOrEmpty(asignaturaId) || x.AsignaturaId == asignaturaId )
                                 .ToList();
