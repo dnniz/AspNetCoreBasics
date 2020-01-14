@@ -229,3 +229,6 @@ _Pvt_Extensions
 .fake/
 
 .vscode/
+
+#No subir archivo de configuración 
+appsettings.Development.json

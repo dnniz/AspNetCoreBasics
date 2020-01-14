@@ -34,13 +34,16 @@ namespace AspNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddScoped<EscuelaEngine>();
+            //services.AddDbContext<EscuelaContext>(
+            //    options => options.UseInMemoryDatabase(databaseName:"TestDB")
+            //);
 
+            string cnn = ConfigurationExtensions.GetConnectionString(this.Configuration, "DefaultConnectionString");
             services.AddDbContext<EscuelaContext>(
-                options => options.UseInMemoryDatabase(databaseName:"TestDB")
+                options => options.UseSqlServer(cnn)
             );
 
-            //When page not update after refresh
+            //[DEPURACION WEB]When page not update after refresh
             //Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
             services.AddControllers()
                     .AddRazorRuntimeCompilation();
