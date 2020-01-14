@@ -1,0 +1,23 @@
+﻿@model CSharpNetCore.Entidades.Alumno
+
+@{
+    ViewData["Title"] = "Creación de Alumnos";
+}
+
+<h2>Creación de Alumnos</h2>
+
+<div asp-validation-summary="All"></div>
+
+<div class="row">
+    <form action="Create" method="post">
+        <div class="col-lg-3">
+            <div class="form-group form-inline">
+                <label asp-for="Nombre"></label>
+                <div class="input-group">
+                    <input asp-for="Nombre" />
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Crear" />
+    </form>
+</div>

@@ -40,7 +40,13 @@ namespace AspNetCore
                 options => options.UseInMemoryDatabase(databaseName:"TestDB")
             );
 
+            //When page not update after refresh
+            //Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+            services.AddControllers()
+                    .AddRazorRuntimeCompilation();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddMvc().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

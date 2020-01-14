@@ -1,0 +1,18 @@
+﻿@model JsonDTO
+    <h2>Cursos</h2>
+
+
+<table class="table table-responsive table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var curso in Model.Cursos)
+        {
+            <partial name="_CursoSimple" model="curso" />
+        }
+    </tbody>
+</table>

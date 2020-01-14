@@ -1,0 +1,9 @@
+﻿@model CSharpNetCore.Entidades.Alumno;
+
+    <tr>
+        <td>@Model.AlumnoId</td>
+        <td>@Model.Nombre</td>
+        <td><input type="button" class="btn btn-success" onclick="return DeleteAlumnoGET('@Model.AlumnoId')" value="Eliminar" /></td>
+    </tr>
+
+
