@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.Models
 {
-    public class AlumnoModel : Alumno
+    public class AsignaturaModel : Asignatura
     {
     }
 }

@@ -1,25 +1,48 @@
-﻿@model JsonDTO
+@model IEnumerable<CSharpNetCore.Entidades.Asignatura>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Asignaturas</h2>
+<h1>Index</h1>
 
-
-<table class="table table-responsive table-bordered">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
         <tr>
-            <td>ID</td>
-            <td>NOMBRE</td>
+            <th>
+                @Html.DisplayNameFor(model => model.Curso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniqueId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var asignatura in Model.Asignaturas)
+        @foreach (var item in Model)
         {
-            <partial name="_AsignaturaSimple" model="asignatura" />
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curso.CursoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UniqueId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AsignaturaId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AsignaturaId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AsignaturaId">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-
-

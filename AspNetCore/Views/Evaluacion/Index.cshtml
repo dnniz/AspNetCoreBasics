@@ -1,4 +1,4 @@
-@model IEnumerable<CSharpNetCore.Entidades.Curso>
+@model IEnumerable<CSharpNetCore.Entidades.Evaluacion>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,13 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Jornada)
+                @Html.DisplayNameFor(model => model.Alumno)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Escuela)
+                @Html.DisplayNameFor(model => model.Asignatura)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
+                @Html.DisplayNameFor(model => model.Nota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Promedio)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UniqueId)
@@ -34,13 +37,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Jornada)
+                @Html.DisplayFor(modelItem => item.Alumno.AlumnoId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Escuela.EscuelaId)
+                @Html.DisplayFor(modelItem => item.Asignatura.AsignaturaId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
+                @Html.DisplayFor(modelItem => item.Nota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promedio)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UniqueId)
@@ -49,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CursoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CursoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CursoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.EvaluacionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EvaluacionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EvaluacionId">Delete</a>
             </td>
         </tr>
 }

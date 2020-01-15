@@ -1,84 +1,47 @@
-﻿@model JsonDTO
-<h2>Alumnos</h2>
+@model IEnumerable<CSharpNetCore.Entidades.Alumno>
 
-<div class="row">
-    <div class="col-lg-3">
-        <button class="btn-success" onclick="window.location.href  = controlador  + 'Create'">Crear Alumno</button>
-    </div>
-    <br />
-</div>
-<table class="table table-responsive table-bordered">
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
         <tr>
-            <td>ID</td>
-            <td>NOMBRE</td>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curso.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniqueId)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var alumno in Model.Alumnos)
-        {
-            <partial name="_AlumnoSimple" model="alumno" />
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curso.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniqueId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AlumnoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AlumnoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AlumnoId">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
-<script type="text/javascript">
-    var siteRoot = "@Url.Content("~/")";
-    var controlador = siteRoot + "Alumno/";
-
-    //POST GET
-    function DeleteAlumnoGET(alumnoId) {
-        debugger;
-        
-        var urlstring = controlador + "Delete";
-        var origin = window.location.origin;
-
-        var url = new URL(origin + urlstring);
-
-        var params = {
-            alumnoId : alumnoId
-        }
-        //agregando parametros a la url
-        url.search = new URLSearchParams(params).toString();
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                debugger;
-                window.location.href = data;
-            })
-    }
-
-    //POST METHOD
-    function DeleteAlumnoPOST(alumnoId) {
-        debugger;
-        var url = controlador + "Delete";
-
-        var alumno = {
-            Id : alumnoId
-        }
-
-        fetch(url, {
-            credentials: 'include',
-            method: 'POST',
-            body: JSON.stringify(alumno),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-            //LOS VALORES NULL NO SE MAPEAN CON json()
-            .then((resp) => resp.json())
-            .then(function (data) {
-                //LOS NOMBRES DE LAS PROPIEDADES TIENEN SIEMPRE SE DEVUELVEN CON LA PRIMERA LETRA EN MINUSCULA
-                if (data.exito) {
-                    alert('Se elmiminó con éxito');
-                } else {
-                    alert('Ocurrió un error');
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-</script>
