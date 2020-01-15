@@ -1,4 +1,4 @@
-@model CSharpNetCore.Entidades.Alumno
+@model CSharpNetCore.Entidades.Asignatura
 
 @{
     ViewData["Title"] = "Create";
@@ -6,30 +6,30 @@
 
 <h1>Create</h1>
 
-<h4>AlumnoModel</h4>
+<h4>AsignaturaModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AlumnoId" class="control-label"></label>
-                <input asp-for="AlumnoId" class="form-control" />
-                <span asp-validation-for="AlumnoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
+                <label asp-for="AsignaturaId" class="control-label"></label>
+                <input asp-for="AsignaturaId" class="form-control" />
+                <span asp-validation-for="AsignaturaId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CursoId" class="control-label"></label>
-                <select asp-for="CursoId" class="form-control" asp-items="ViewBag.CursoId"></select>
+                <select asp-for="CursoId" class ="form-control" asp-items="ViewBag.CursoId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="UniqueId" class="control-label"></label>
                 <input asp-for="UniqueId" class="form-control" />
                 <span asp-validation-for="UniqueId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

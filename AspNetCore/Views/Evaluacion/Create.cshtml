@@ -1,4 +1,4 @@
-@model CSharpNetCore.Entidades.Curso
+@model CSharpNetCore.Entidades.Evaluacion
 
 @{
     ViewData["Title"] = "Create";
@@ -6,30 +6,34 @@
 
 <h1>Create</h1>
 
-<h4>CursoModel</h4>
+<h4>EvaluacionModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CursoId" class="control-label"></label>
-                <input asp-for="CursoId" class="form-control" />
-                <span asp-validation-for="CursoId" class="text-danger"></span>
+                <label asp-for="EvaluacionId" class="control-label"></label>
+                <input asp-for="EvaluacionId" class="form-control" />
+                <span asp-validation-for="EvaluacionId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Jornada" class="control-label"></label>
-                <select asp-for="Jornada" class="form-control"></select>
-                <span asp-validation-for="Jornada" class="text-danger"></span>
+                <label asp-for="AlumnoId" class="control-label"></label>
+                <select asp-for="AlumnoId" class ="form-control" asp-items="ViewBag.AlumnoId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="EscuelaId" class="control-label"></label>
-                <select asp-for="EscuelaId" class ="form-control" asp-items="ViewBag.EscuelaId"></select>
+                <label asp-for="AsignaturaId" class="control-label"></label>
+                <select asp-for="AsignaturaId" class ="form-control" asp-items="ViewBag.AsignaturaId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Direccion" class="control-label"></label>
-                <input asp-for="Direccion" class="form-control" />
-                <span asp-validation-for="Direccion" class="text-danger"></span>
+                <label asp-for="Nota" class="control-label"></label>
+                <input asp-for="Nota" class="form-control" />
+                <span asp-validation-for="Nota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Promedio" class="control-label"></label>
+                <input asp-for="Promedio" class="form-control" />
+                <span asp-validation-for="Promedio" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="UniqueId" class="control-label"></label>

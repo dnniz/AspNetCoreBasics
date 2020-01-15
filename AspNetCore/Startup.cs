@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace AspNetCore
 {
@@ -34,13 +35,16 @@ namespace AspNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddScoped<EscuelaEngine>();
+            //services.AddDbContext<EscuelaContext>(
+            //    options => options.UseInMemoryDatabase(databaseName:"TestDB")
+            //);
 
+            string cnn = ConfigurationExtensions.GetConnectionString(this.Configuration, "DefaultConnectionString");
             services.AddDbContext<EscuelaContext>(
-                options => options.UseInMemoryDatabase(databaseName:"TestDB")
+                options => options.UseSqlServer(cnn)
             );
 
-            //When page not update after refresh
+            //[DEPURACION WEB]When page not update after refresh
             //Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
             services.AddControllers()
                     .AddRazorRuntimeCompilation();
@@ -50,7 +54,7 @@ namespace AspNetCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

@@ -1,10 +1,11 @@
-﻿using CSharpNetCore.App;
+using CSharpNetCore.App;
 using CSharpNetCore.Entidades;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCore.Models;
 
 namespace AspNetCore.Models
 {
