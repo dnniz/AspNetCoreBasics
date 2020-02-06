@@ -82,7 +82,7 @@ namespace AspNetCore.Controllers
             {
                 return NotFound();
             }
-            ViewData["CursoId"] = new SelectList(_context.Cursos, "CursoId", "CursoId", asignaturaModel.CursoId);
+            ViewData["CursoId"] = new SelectList(_context.Cursos, "CursoId", "Nombre", asignaturaModel.CursoId);
             return View(asignaturaModel);
         }
 
